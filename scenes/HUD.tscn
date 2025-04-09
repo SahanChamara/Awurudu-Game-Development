@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ospvtxemqddc"]
+
+[ext_resource type="Script" uid="uid://b3cjglkxc0sal" path="res://scripts/HUD.gd" id="1_qpvh6"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qpvh6")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 214.0
+offset_right = 181.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 50
+text = "Score : "

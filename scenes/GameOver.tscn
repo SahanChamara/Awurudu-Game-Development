@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://drwjapyrrb2tt"]
+
+[ext_resource type="Script" uid="uid://cvp321li86uwj" path="res://scripts/GameOver.gd" id="1_6bcno"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_6bcno")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 743.0
+offset_bottom = 1254.0
+color = Color(0.162066, 0.162066, 0.162066, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 94.0
+offset_top = 396.0
+offset_right = 610.0
+offset_bottom = 688.0
+
+[node name="game over" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "Game Over"
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Final Score: 0"
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Restart"

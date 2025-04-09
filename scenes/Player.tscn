@@ -1,0 +1,98 @@
+[gd_scene load_steps=13 format=3 uid="uid://bq6ckgafpdmju"]
+
+[ext_resource type="Script" uid="uid://ddmtek14taxpx" path="res://scripts/Player.gd" id="1_v6fml"]
+[ext_resource type="Texture2D" uid="uid://dnuiyve6m3a2v" path="res://assets/climb animation.png" id="2_v6fml"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6fml"]
+radius = 93.0
+height = 422.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3li8b"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(0, 0, 545, 1147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(545, 0, 545, 1147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4a1"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1090, 0, 545, 1147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70d11"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1635, 0, 545, 1147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw2d6"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(2180, 0, 545, 1147)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khinc"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(2725, 0, 545, 1147)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdl7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3li8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdl7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu4a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70d11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw2d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khinc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_v6fml"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
+radius = 96.0
+height = 310.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_v6fml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_v6fml")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-4.99998, 4.99997)
+scale = Vector2(0.278388, 0.272773)
+sprite_frames = SubResource("SpriteFrames_mdl7e")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.84923
+
+[node name="LadderRayCast" type="RayCast2D" parent="."]
+target_position = Vector2(0, -10)
+collision_mask = 2
+hit_from_inside = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+position = Vector2(-2, -411)
+script = SubResource("GDScript_v6fml")
+
+[node name="HitCooldownTimer" type="Timer" parent="."]
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+position = Vector2(-3, 19)
+shape = SubResource("CapsuleShape2D_3li8b")
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
