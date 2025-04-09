@@ -35,6 +35,14 @@ func set_invincible(value: bool):
 	modulate.a = 0.5 if value else  1.0
 
 func _physics_process(delta: float) -> void:
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		
+		if collider and collider.is_in_group("BirdEnemy"):
+			print("direct collision with bird detected")
+			take_damage(collider)		
+	
 	if ladder_ray_cast.get_collider() and Input.is_action_pressed("ui_up"):
 		if !is_climbing:
 			is_climbing = true
@@ -78,6 +86,8 @@ func _physics_process(delta: float) -> void:
 			velocity.y = LADDER_FALL_SPEED
 			was_on_ladder = false
 		_movement(delta)
+		
+	velocity.x = 0
 	
 	_setAnimation()
 	move_and_slide()

@@ -28,12 +28,14 @@ func end_game() -> void:
 	
 	# Don't pause the tree immediately as it might interfere with scene change
 	# Instead use a separate timer to delay the scene change
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.wait_time = 0.5
-	timer.timeout.connect(func(): _change_to_game_over())
-	add_child(timer)
-	timer.start()
+	#var timer = Timer.new()
+	#timer.one_shot = true
+	#timer.wait_time = 0.5
+	#timer.timeout.connect(func(): _change_to_game_over())
+	#add_child(timer)
+	#timer.start()
+	
+	get_tree().change_scene_to_file("res://scenes/GameOver.tscn")
 
 func _change_to_game_over():
 	print("Changing to GameOver scene")

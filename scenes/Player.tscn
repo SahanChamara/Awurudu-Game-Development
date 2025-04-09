@@ -60,8 +60,8 @@ animations = [{
 [sub_resource type="GDScript" id="GDScript_v6fml"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3li8b"]
-radius = 96.0
-height = 310.0
+radius = 76.0
+height = 316.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_v6fml")
@@ -92,7 +92,7 @@ script = SubResource("GDScript_v6fml")
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
-position = Vector2(-3, 19)
+position = Vector2(-6, 8)
 shape = SubResource("CapsuleShape2D_3li8b")
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
